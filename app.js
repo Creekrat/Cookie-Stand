@@ -12,8 +12,8 @@ function Store (city,minCust,maxCust,avgCookie) {
     this.maxCust = maxCust;
     this.avgCookie = avgCookie;
     this.cookiesEveryHour = [];
-}
-
+    this.totalSales = [];
+}//create another property for the constuctor..
 Store.prototype.checkCustomers = function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
 }       
@@ -23,6 +23,12 @@ Store.prototype.calculatePerHour = function () {
         this.cookiesEveryHour.push(Math.floor(this.checkCustomers() * this.avgCookie));
     }
 }       
+Store.calculateTotal = function(){
+    for (var i = 0; i < hour.length; i++){
+        this.totalSales.push(this.checkCustomers() * this.avgCookie);
+    }
+   
+} 
 Store.prototype.render = function(){
     var tableBody = document.getElementById('tablebody');
     var tableRow = document.createElement('tr');
@@ -253,7 +259,7 @@ createTable();
 
     // };
     //  lima.calculatePerHour();
-	  
+      	  
 
 	
 
