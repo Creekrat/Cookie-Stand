@@ -1,5 +1,6 @@
 'use strict'
-console.log('java is loaded')
+
+console.log('java is loaded');
 
    
 	var store = null
@@ -13,8 +14,13 @@ function Store (city,minCust,maxCust,avgCookie) {
     this.maxCust = maxCust;
     this.avgCookie = avgCookie;
     this.cookiesEveryHour = [];
+
     this.totalCookies = [];
 }
+
+
+    this.totalSales = [];
+}//create another property for the constuctor..
 
 Store.prototype.checkCustomers = function() {
     return Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
@@ -58,6 +64,7 @@ Dubai.calculatePerHour();
 Paris.calculatePerHour();
 Lima.calculatePerHour();
 
+
 function createTableFooter(){
     var trElement = document.createElement('tr');
     myTable.append(trElement);
@@ -89,6 +96,10 @@ function createTableFooter(){
 
 
 
+
+
+
+
 function tableHead() {
     var head = document.getElementById('tablehead');
     var myRow = document.createElement('tr');
@@ -109,6 +120,7 @@ function createTable(){
     Dubai.render();
     Paris.render();
     Lima.render();
+    
 
 }
 createTable();
@@ -289,7 +301,7 @@ createTable();
 
     // };
     //  lima.calculatePerHour();
-	  
+      	  
 
 	
 
