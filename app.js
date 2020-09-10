@@ -3,10 +3,10 @@
 console.log('java is loaded');
 
    
-	var store = null
+
 
 var hour = ["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm"];
-var myTable = document.getElementById("myTable");
+
 
 function Store (city,minCust,maxCust,avgCookie) {
     this.city = city;
