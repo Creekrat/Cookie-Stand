@@ -2,16 +2,18 @@
 console.log('java is loaded')
 
    
-	
+	var store = null
 
 var hour = ["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm"];
-    
+var myTable = document.getElementById("myTable");
+
 function Store (city,minCust,maxCust,avgCookie) {
     this.city = city;
     this.minCust = minCust;
     this.maxCust = maxCust;
     this.avgCookie = avgCookie;
     this.cookiesEveryHour = [];
+    this.totalCookies = [];
 }
 
 Store.prototype.checkCustomers = function() {
@@ -22,7 +24,14 @@ Store.prototype.calculatePerHour = function () {
     for ( var i = 0; i < hour.length; i++) {
         this.cookiesEveryHour.push(Math.floor(this.checkCustomers() * this.avgCookie));
     }
-}       
+}   
+Store.prototype.calculateTotal = function (){
+    for ( var i = 0; i < hour.length; i++) {
+        this.totalCookies.push(calculatePerHour() * this.cookiesEveryHour);
+        
+    }
+}  
+
 Store.prototype.render = function(){
     var tableBody = document.getElementById('tablebody');
     var tableRow = document.createElement('tr');
@@ -37,11 +46,11 @@ Store.prototype.render = function(){
     }
 }
 
-var Seattle = new Store ('Seattle', 23, 65, 6.3);
-var Tokyo = new Store ('Tokyo', 3, 24, 1.2);
-var Dubai = new Store ('Dubai', 11, 38, 3.7);
-var Paris = new Store ('Paris', 20, 38, 2.3);
-var Lima = new Store ('Lima', 2, 16, 4.6);
+var Seattle = new Store ('Seattle', 23, 65, 6.3,[]);
+var Tokyo = new Store ('Tokyo', 3, 24, 1.2,[]);
+var Dubai = new Store ('Dubai', 11, 38, 3.7,[]);
+var Paris = new Store ('Paris', 20, 38, 2.3,[]);
+var Lima = new Store ('Lima', 2, 16, 4.6,[]);
 
 Seattle.calculatePerHour();
 Tokyo.calculatePerHour();
@@ -49,7 +58,34 @@ Dubai.calculatePerHour();
 Paris.calculatePerHour();
 Lima.calculatePerHour();
 
-   
+function createTableFooter(){
+    var trElement = document.createElement('tr');
+    myTable.append(trElement);
+
+    var thElement = document.createElement('th');
+    trElement.append(thElement);
+    thElement.textContent = ('Totals');
+
+    var grandTotal = 0;
+    loop1: for (var i =0; i < hour.length; i++) {
+
+        var hourlySum = 0;
+         var tdElement = document.createElement('td');
+         trElement.appendChild(tdElement);
+
+         loop2: for (var j = 0; j < hour.length; j++) {
+             hourlySum += store[j].totalCookies[i];
+             grandTotal += store[j].totalCookies[i];
+         }
+
+         tdElement.textContent = hourlySum;
+    }
+    tdElement = document.createElement('td');
+    trElement.append(tdElement);
+    tdElement.textContent = grandTotal;
+}
+
+   createTableFooter();
 
 
 
