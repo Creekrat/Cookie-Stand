@@ -2,7 +2,7 @@
 console.log('java is loaded')
 
    
-	var store = null
+	var store = [];
 
 var hour = ["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm"];
 var myTable = document.getElementById("myTable");
@@ -14,6 +14,7 @@ function Store (city,minCust,maxCust,avgCookie) {
     this.avgCookie = avgCookie;
     this.cookiesEveryHour = [];
     this.totalCookies = [];
+    store.push(this);
 }
 
 Store.prototype.checkCustomers = function() {
@@ -63,26 +64,28 @@ function createTableFooter(){
     myTable.append(trElement);
 
     var thElement = document.createElement('th');
-    trElement.append(thElement);
     thElement.textContent = ('Totals');
+    trElement.append(thElement);
 
     var grandTotal = 0;
-    loop1: for (var i =0; i < hour.length; i++) {
+    loop1: for (var i = 0; i < hour.length; i++) {
 
         var hourlySum = 0;
          var tdElement = document.createElement('td');
          trElement.appendChild(tdElement);
 
-         loop2: for (var j = 0; j < hour.length; j++) {
-             hourlySum += store[j].totalCookies[i];
-             grandTotal += store[j].totalCookies[i];
+         loop2: for (var j = 0; j < store.length; j++) {
+             console.log('store',store[j]);
+             hourlySum += store[j].cookiesEveryHour[i];
+             console.log('hourlySum',hourlySum);
+             grandTotal += store[j].cookiesEveryHour[i];
          }
 
          tdElement.textContent = hourlySum;
     }
     tdElement = document.createElement('td');
-    trElement.append(tdElement);
     tdElement.textContent = grandTotal;
+    trElement.append(tdElement);
 }
 
    createTableFooter();
@@ -99,6 +102,10 @@ function tableHead() {
         tableItem.textContent = `${hour[i]}`;
         myRow.append(tableItem);
     }
+    var thElement = document.createElement('th');
+    thElement.textContent = 'Total';
+    myRow.append(thElement);
+
     head.append(myRow);
  }
 
