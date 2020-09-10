@@ -1,5 +1,6 @@
 'use strict'
-console.log('java is loaded')
+
+console.log('java is loaded');
 
    
 	
@@ -23,12 +24,6 @@ Store.prototype.calculatePerHour = function () {
         this.cookiesEveryHour.push(Math.floor(this.checkCustomers() * this.avgCookie));
     }
 }       
-Store.calculateTotal = function(){
-    for (var i = 0; i < hour.length; i++){
-        this.totalSales.push(this.checkCustomers() * this.avgCookie);
-    }
-   
-} 
 Store.prototype.render = function(){
     var tableBody = document.getElementById('tablebody');
     var tableRow = document.createElement('tr');
@@ -55,7 +50,8 @@ Dubai.calculatePerHour();
 Paris.calculatePerHour();
 Lima.calculatePerHour();
 
-   
+
+
 
 
 
@@ -79,6 +75,7 @@ function createTable(){
     Dubai.render();
     Paris.render();
     Lima.render();
+    
 
 }
 createTable();
