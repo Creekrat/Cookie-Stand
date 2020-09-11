@@ -143,14 +143,6 @@ store = [Seattle,Tokyo,Dubai,Paris,Lima];
 createTable();
 
 
-function logger(event) {
-  console.log('Input changed', event.target.name,event.target.value);
-}
-function refreshTable() {
-  var table = document.getElementById('myTable');
-  table.innerHTML = '';
-
-}
 
 function makeNewStore(event) {
   console.log(store);
