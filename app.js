@@ -20,11 +20,13 @@ function Store (city,minCust,maxCust,avgCookie) {
 
 
 
+
 Store.prototype.checkCustomers = function() {
   return Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
 };
 
 Store.prototype.calculatePerHour = function () {
+
   for ( var i = 0; i < hour.length; i++) {
     this.cookiesEveryHour.push(Math.floor(this.checkCustomers() * this.avgCookie));
   }
@@ -35,6 +37,7 @@ Store.prototype.calculateTotal = function (){
 
   }
 };
+
 
 Store.prototype.render = function(){
   var tableBody = document.getElementById('tablebody');
@@ -61,6 +64,7 @@ Tokyo.calculatePerHour();
 Dubai.calculatePerHour();
 Paris.calculatePerHour();
 Lima.calculatePerHour();
+
 
 
 function createTableFooter(){
@@ -93,6 +97,7 @@ function createTableFooter(){
 }
 
 createTableFooter();
+
 
 
 
