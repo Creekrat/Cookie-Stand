@@ -1,20 +1,20 @@
-'use strict'
-console.log('java is loaded')
+'use strict';
 
-   
-	var store = [];
+console.log('java is loaded');
+
+var store = [];
 
 var hour = ["6am","7am","8am","9am","10am","11am","12pm","1pm","2pm","3pm","4pm","5pm","6pm","7pm"];
 var myTable = document.getElementById("myTable");
 
 function Store (city,minCust,maxCust,avgCookie) {
-    this.city = city;
-    this.minCust = minCust;
-    this.maxCust = maxCust;
-    this.avgCookie = avgCookie;
-    this.cookiesEveryHour = [];
-    this.totalCookies = [];
-    store.push(this);
+  this.city = city;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookie = avgCookie;
+  this.cookiesEveryHour = [];
+  this.totalCookies = [];
+  store.push(this);
 }
 
 Store.prototype.checkCustomers = function() {
