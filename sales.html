@@ -16,11 +16,34 @@
             <tbody id = "tablebody">
 
             </tbody>
-            <tfoot>
+            <tfoot id = "foot">
 
             </tfoot>
         </table>
-
+        <form id = "store-form">
+            <fieldset>
+                <legends>Stores</legends>
+                <label for = 'city'>
+                    City
+                    <input name ="city" id = "city" type ="text" required>
+                </label>
+                <label for = 'minCust'>
+                    Min Customers
+                    <input name = "minCust" id ="minCust" type="text" required>
+                </label>
+                <label for = 'maxCust'>
+                    Max Customers
+                    <input name = "maxCust" id = "maxCust" type = "text" required>
+                </label>
+                <label for = 'avgCookie'>
+                   Avg Cookies
+                   <input name = "avgCookie" id = "avgCookie" type = "text" required>
+                </label>
+                <button>
+                    Submit
+                </button>
+            </fieldset>
+        </form>
 
         <script src="app.js"></script>
     </body>
